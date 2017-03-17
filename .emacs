@@ -2,14 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 (require 'package)
-(package-initialize)
-
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
              '("gnu" . "https://elpa.gnu.org/packages/"))
 ;; (add-to-list 'package-archives
 ;;              '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
 (cmake-ide-setup)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
