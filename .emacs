@@ -77,6 +77,8 @@
 (require 'helm-ls-git)
 (global-set-key (kbd "C-c r f") 'helm-ls-git-ls)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (show-paren-mode 1)
