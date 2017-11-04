@@ -22,7 +22,7 @@
 (when (require 'rtags nil :noerror)
   ;; make sure you have company-mode installed
   (require 'company)
-  (require 'rtags-helm)
+  (require 'helm-rtags)
   (define-key c-mode-base-map (kbd "M-.")
     (function rtags-find-symbol-at-point))
   (define-key c-mode-base-map (kbd "M-,")
@@ -104,7 +104,10 @@
    (quote
     ("-Wall" "-Wextra" "-Wno-pragma-once-outside-header")))
  '(indent-tabs-mode nil)
- '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header"))))
+ '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header")))
+ '(package-selected-packages
+   (quote
+    (rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
