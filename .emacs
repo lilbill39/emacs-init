@@ -10,8 +10,11 @@
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 (display-time)
-(load-theme 'tango-dark)
+(if (display-graphic-p)
+    (load-theme 'solarized-dark))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(require 'company-dcd)
+(add-hook 'd-mode-hook 'company-dcd-mode)
 ;; ensure that we use only rtags checking
 ;; https://github.com/Andersbakken/rtags#optional-1
 ;; (defun setup-flycheck-rtags ()
@@ -94,6 +97,7 @@
 
 (load "/usr/share/emacs/site-lisp/clang-format-3.9/clang-format.el")
 (global-set-key [C-tab] 'clang-format-region)
+(global-set-key (kbd "C-c TAB") 'company-complete)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -106,6 +110,10 @@
  '(cmake-ide-compile-command nil)
  '(company-clang-executable "clang-3.9")
  '(company-dabbrev-downcase nil)
+ '(company-dcd--flags (quote ("-I/home/ry/dlang/dmd-2.083.0/src/phobos/")))
+ '(company-dcd-client-executable "/home/ry/DCD/bin/dcd-client")
+ '(company-dcd-compiler "gdc")
+ '(company-dcd-server-executable "/home/ry/DCD/bin/dcd-server")
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
@@ -151,7 +159,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
+    (company-dcd d-mode matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
