@@ -1,7 +1,7 @@
 # ry's bash customizations
 git_branch() {
     local gb=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
-    local gs=$(git status -s)
+    local gs=$(git status -s 2>/dev/null)
     if [ "$gs" != "" ]; then
         gs='*'
     fi
