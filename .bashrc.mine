@@ -1,0 +1,15 @@
+# ry's bash customizations
+git_branch() {
+    local gb=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
+    local gs=$(git status -s)
+    if [ "$gs" != "" ]; then
+        gs='*'
+    fi
+    if [ "$gb" = "" ]; then
+        gb="?"
+    fi
+    printf ' \u2387  %s%s' $gb "$gs"
+}
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]\[\033[01;34m\] \w\[\033[00m\]\[\033[01;35m\]$(git_branch)\[\033[00m\] \$ '
+setxkbmap -option ctrl:nocaps
