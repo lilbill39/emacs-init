@@ -11,7 +11,7 @@
 (package-initialize)
 (display-time)
 (if (display-graphic-p)
-    (load-theme 'solarized-dark t))
+    (load-theme 'tango-dark t))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
