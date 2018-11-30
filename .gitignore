@@ -3,4 +3,9 @@
 !.gitignore
 !.tmux.conf
 !.bashrc.mine
-# !.config/fish/config.fish manually tracked
+!.config
+!.config/fish
+!.config/fish/config.fish
+!.config/terminator
+!.config/terminator/config
+*~
