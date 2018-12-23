@@ -15,6 +15,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
+;; Make MATLAB commenting actually useful
+(add-hook 'matlab-mode-hook (lambda () (local-set-key (kbd "M-;") 'comment-dwim)))
 ;; ensure that we use only rtags checking
 ;; https://github.com/Andersbakken/rtags#optional-1
 ;; (defun setup-flycheck-rtags ()
