@@ -15,6 +15,12 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
+(add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
+
+(require 'flycheck-matlab-mlint)
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
+
 ;; Make MATLAB commenting actually useful
 (add-hook 'matlab-mode-hook (lambda () (local-set-key (kbd "M-;") 'comment-dwim)))
 ;; ensure that we use only rtags checking
@@ -124,11 +130,16 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(ediff-merge-split-window-function (quote split-window-vertically))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(fci-rule-color "#eee8d5")
  '(flycheck-c/c++-clang-executable "clang-3.9")
  '(flycheck-clang-args
    (quote
     ("-Wall" "-Wextra" "-Wno-pragma-once-outside-header")))
+ '(flycheck-emacs-lisp-load-path (quote ("/home/ry/flycheck-matlab-mlint")))
+ '(flycheck-matlab-mlint-executable "/home/ry/MATLAB/18bCoderOnly/bin/glnxa64/mlint")
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -156,6 +167,12 @@
  '(indent-tabs-mode nil)
  '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header")))
  '(magit-diff-use-overlays nil)
+ '(matlab-show-mlint-warnings nil)
+ '(mlint-calculate-cyclic-complexity-flag nil)
+ '(mlint-programs
+   (quote
+    ("mlint" "glnxa64/mlint" "/home/ry/MATLAB/18bCoderOnly/bin/glnxa64/mlint")))
+ '(mlint-verbose t)
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
