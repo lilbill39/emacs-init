@@ -15,7 +15,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
-(add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
+;; (add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
 
 (require 'flycheck-matlab-mlint)
 (eval-after-load 'flycheck
@@ -168,7 +168,8 @@
  '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header")))
  '(magit-diff-use-overlays nil)
  '(matlab-fill-strings-flag nil)
- '(matlab-show-mlint-warnings nil)
+ '(matlab-highlight-block-match-flag nil)
+ '(matlab-show-mlint-warnings t)
  '(mlint-calculate-cyclic-complexity-flag nil)
  '(mlint-programs
    (quote
@@ -179,7 +180,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (company-tern fish-mode company-dcd d-mode matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
+    (flycheck-matlab-mlint company-tern fish-mode company-dcd d-mode matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
