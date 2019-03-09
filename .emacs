@@ -15,7 +15,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
-;; (add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
+(add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
 
 (require 'flycheck-matlab-mlint)
 (eval-after-load 'flycheck
