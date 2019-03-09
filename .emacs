@@ -18,8 +18,8 @@
 (add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
 
 (require 'flycheck-matlab-mlint)
-    (eval-after-load 'flycheck
-      '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
 
 ;; Make MATLAB commenting actually useful
 (add-hook 'matlab-mode-hook (lambda () (local-set-key (kbd "M-;") 'comment-dwim)))
@@ -167,6 +167,7 @@
  '(indent-tabs-mode nil)
  '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header")))
  '(magit-diff-use-overlays nil)
+ '(matlab-fill-strings-flag nil)
  '(matlab-show-mlint-warnings nil)
  '(mlint-calculate-cyclic-complexity-flag nil)
  '(mlint-programs
