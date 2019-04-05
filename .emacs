@@ -89,9 +89,9 @@
 (require 'helm-config)
 (helm-mode 1)
 (require 'helm-ls-git)
-(global-set-key (kbd "C-c C-r f") 'helm-ls-git-ls)
-(global-set-key (kbd "C-c C-r a") 'helm-ag)
-(global-set-key (kbd "C-c C-r A") 'helm-do-ag)
+(global-set-key (kbd "C-c r f") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c r a") 'helm-ag)
+(global-set-key (kbd "C-c r A") 'helm-do-ag)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -138,8 +138,9 @@
  '(flycheck-clang-args
    (quote
     ("-Wall" "-Wextra" "-Wno-pragma-once-outside-header")))
+ '(flycheck-clang-include-path (quote ("/home/ry/MATLAB/19aCoders/extern/include/")))
  '(flycheck-emacs-lisp-load-path (quote ("/home/ry/flycheck-matlab-mlint")))
- '(flycheck-matlab-mlint-executable "/home/ry/MATLAB/18bCoderOnly/bin/glnxa64/mlint")
+ '(flycheck-matlab-mlint-executable "/home/ry/MATLAB/19aCoders/bin/glnxa64/mlint")
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
