@@ -9,17 +9,33 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
+(load-file "/home/ry/ttt/lsp-sample/lsp-sample.el")
 (display-time)
 (if (display-graphic-p)
     (load-theme 'tango-dark t))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'company-dcd)
 (add-hook 'd-mode-hook 'company-dcd-mode)
-(add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
+;; (add-to-list 'load-path "/home/ry/flycheck-matlab-mlint")
 
-(require 'flycheck-matlab-mlint)
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
+;; (require 'flycheck-matlab-mlint)
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
+
+(require 'lsp-mode)
+(add-hook 'matlab-mode-hook #'lsp)
+
+(load-file "/home/ry/matlabls/editors/emacs/lsp-matlab.el")
+
+;; (require 'company-lsp)
+;; (push 'company-lsp company-backends)
+
+(require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+;; Don't need mlint mode with the flycheck checker
+(require 'mlint)
+(defun mlint-buffer () "No-op override for mlint." )
 
 ;; Make MATLAB commenting actually useful
 (add-hook 'matlab-mode-hook (lambda () (local-set-key (kbd "M-;") 'comment-dwim)))
@@ -167,6 +183,10 @@
  '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(indent-tabs-mode nil)
  '(irony-additional-clang-options (quote ("-Wno-pragma-once-outside-header")))
+ '(lsp-clients-matlab-launch-cmd "/home/ry/MATLAB/19aCoders/bin/matlab")
+ '(lsp-clients-matlab-server "/home/ry/matlabls/server/out/server.js")
+ '(lsp-clients-matlab-workspace-indexing t)
+ '(lsp-ui-sideline-enable nil)
  '(magit-diff-use-overlays nil)
  '(matlab-fill-strings-flag nil)
  '(matlab-highlight-block-match-flag nil)
@@ -181,7 +201,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (flycheck-matlab-mlint company-tern fish-mode company-dcd d-mode matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
+    (helm-lsp gnu-elpa-keyring-update lsp-ui lsp-mode flycheck-matlab-mlint company-tern fish-mode company-dcd d-mode matlab-mode markdown-mode markdown-mode+ solarized-theme csharp-mode color-theme-solarized rtags helm-ls-git helm-ag flycheck-irony ess company-irony-c-headers company-irony cmake-project cmake-mode cmake-ide auto-complete)))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
