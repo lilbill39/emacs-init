@@ -9,7 +9,6 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
-(load-file "/home/ry/ttt/lsp-sample/lsp-sample.el")
 (display-time)
 (if (display-graphic-p)
     (load-theme 'tango-dark t))
