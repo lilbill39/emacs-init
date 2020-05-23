@@ -6,6 +6,7 @@
 ;;              '("melpa-stable" . "https://stable.melpa.org/packages/"))
 ;; (add-to-list 'package-archives
 ;;              '("gnu" . "https://elpa.gnu.org/packages/"))
+;; (toggle-debug-on-error)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
@@ -22,7 +23,7 @@
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-matlab-mlint-setup))
 
 (require 'lsp-mode)
-(add-hook 'matlab-mode-hook #'lsp)
+(add-hook 'matlab-mode-hook #'lsp-deferred)
 
 (load-file "/home/ry/matlabls/editors/emacs/lsp-matlab.el")
 
@@ -243,3 +244,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-tramp-connection "<insert your LS's binary name or path here>")
+                  :major-modes '(python-mode)
+                  :remote? t
+                  :server-id 'pyls-remote))
